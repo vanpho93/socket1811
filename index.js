@@ -15,5 +15,5 @@ server.listen(3000, () => console.log('Server started!'));
 reload(app);
 
 io.on('connection', socket => {
-	socket.on('SERVER_SEND_MESSAGE', data => console.log(data));
+	// socket.on('SERVER_SEND_MESSAGE', data => console.log(data));
 });

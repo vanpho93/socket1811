@@ -3,14 +3,30 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<title>Socket.io</title>
 </head>
-<body>
+<body style="margin-top: 20px;">
+	<div class="container">
+		<div class="form-inline">
+			<input type="text" class="form-control" placeholder="Enter message" id="txtMessage">
+			<button class="btn btn-success" id="btnSend">Send</button>
+		</div>
+		<br>
+		<ul id="ulMessages">
+		</ul>
+	</div>
 </body>
 </html>
 <script src="/reload/reload.js"></script>
 <script src="socket.io/socket.io.js"></script>
+<script src="js/jquery.min.js"></script>
 <script>
 	const socket = io();
-    setInterval(() => socket.emit('SERVER_SEND_MESSAGE', Math.random()), 2000);
+	// setInterval(() => socket.emit('SERVER_SEND_MESSAGE', Math.random()), 2000);
+	$('#btnSend').click(() => {
+		const message = $('#txtMessage').val();
+		$('#txtMessage').val('');
+		$('#ulMessages').append(`<li><p class="text-info">${message}</p></li>`);
+	});
 </script>
