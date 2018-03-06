@@ -1,0 +1,13 @@
+<app-test></app-test>
+<div class="container" style="margin-top: 20px;">
+    <div class="form-inline">
+      <input type="text" class="form-control" placeholder="Enter message" #txtMessage>
+      <button class="btn btn-success" (click)="show(txtMessage.value)">Send</button>
+    </div>
+    <br>
+    <ul id="ulMessages">
+      <li *ngFor="let message of messages">
+        <p class="text-info">{{ message }}</p>
+      </li>
+    </ul>
+</div>

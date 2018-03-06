@@ -23,10 +23,12 @@
 <script src="js/jquery.min.js"></script>
 <script>
 	const socket = io();
-	// setInterval(() => socket.emit('SERVER_SEND_MESSAGE', Math.random()), 2000);
+	socket.on('SERVER_SEND_MESSAGE', data => {
+		$('#ulMessages').append(`<li><p class="text-info">${data}</p></li>`);
+	});
 	$('#btnSend').click(() => {
 		const message = $('#txtMessage').val();
 		$('#txtMessage').val('');
-		$('#ulMessages').append(`<li><p class="text-info">${message}</p></li>`);
+		socket.emit('CLIENT_SEND_MESSAGE', message);
 	});
 </script>
